@@ -1,7 +1,9 @@
-package com.tw.ddd.domain.misc;
+package com.tw.ddd.domain.misc.service;
+
+import com.tw.ddd.domain.misc.Address;
+import com.tw.ddd.domain.misc.Customer;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class CustomerService {
@@ -25,7 +27,7 @@ public class CustomerService {
     {
         customerMap.put(customer.getName(),customer);
     }
-    public void updateAddress(String customerName,Address newAddress){
+    public void updateAddress(String customerName, Address newAddress){
         Customer customer = getCustomerByName(customerName);
         customer.setAddress(newAddress);
         customer.getAccounts().forEach(account -> account.setAddress(newAddress));

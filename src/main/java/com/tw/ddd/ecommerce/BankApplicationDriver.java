@@ -2,7 +2,7 @@ package com.tw.ddd.ecommerce;
 
 import com.tw.ddd.domain.misc.Address;
 import com.tw.ddd.domain.misc.Customer;
-import com.tw.ddd.domain.misc.CustomerService;
+import com.tw.ddd.domain.misc.service.CustomerService;
 
 public class BankApplicationDriver {
     public static void main(String[] args) {
