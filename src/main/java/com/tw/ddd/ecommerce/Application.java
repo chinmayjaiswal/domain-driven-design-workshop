@@ -2,17 +2,22 @@ package com.tw.ddd.ecommerce;
 
 import com.tw.ddd.domain.Cart;
 import com.tw.ddd.domain.CartItem;
+import com.tw.ddd.domain.Price;
 import com.tw.ddd.domain.Product;
 
 import java.text.MessageFormat;
 
 public class Application {
     public static void main(String[] args) {
-        String ipadProProductName = "Ipad Pro";
-        Product ipadProProduct = new Product(ipadProProductName);
-        Product heroInkPenProduct = new Product("Hero Ink Pen");
-        Product gmCricketBatProduct = new Product("GM Cricket bat");
 
+        //already available products------- from system
+        String ipadProProductName = "Ipad Pro";
+        Product ipadProProduct = new Product(ipadProProductName, new Price(1000L));
+        Product heroInkPenProduct = new Product("Hero Ink Pen",new Price(10L));
+        Product gmCricketBatProduct = new Product("GM Cricket bat",new Price(100L));
+
+
+        //------user interaction starts here
         Cart cart = new Cart("Cart-1");
         cart.addProduct(new CartItem(ipadProProduct));
 

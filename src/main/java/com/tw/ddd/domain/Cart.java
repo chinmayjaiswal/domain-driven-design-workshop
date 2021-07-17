@@ -15,10 +15,11 @@ public class Cart {
     public Cart(String id) {
         this.id = id;
         items = new HashSet<>();
-        removedItemsLog = new ArrayList<String>();
+        removedItemsLog = new ArrayList<>();
     }
 
     public void addProduct(CartItem item) {
+        System.out.println("Adding Item "+ item.getProduct().getName() + "  "+ item.getProduct().getPrice() + " Quantity: " + item.getQuantity());
         this.items.add(item);
     }
 

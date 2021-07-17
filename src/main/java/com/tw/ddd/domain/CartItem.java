@@ -33,6 +33,14 @@ public class CartItem {
         return Objects.hash(product.getName());
     }
 
+    public Product getProduct() {
+        return product;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
     @Override
     public String
     toString() {
