@@ -2,35 +2,23 @@ package com.tw.ddd.ecommerce;
 
 import com.tw.ddd.domain.Cart;
 import com.tw.ddd.domain.CartItem;
-import com.tw.ddd.domain.Price;
 import com.tw.ddd.domain.Product;
+import com.tw.ddd.domain.service.ProductService;
+import com.tw.ddd.domain.service.ProductPricingService;
 
 import java.text.MessageFormat;
-import java.util.HashMap;
-import java.util.Map;
 
 public class Application {
-    private static final String ipadProProductName = "Ipad Pro";
-    private static final String heroInkPenProductName = "Hero Ink Pen";
-    private static final String gmCricketBatProductName = "GM Cricket bat";
 
-    static Map<String, Price> map;
-
-    static {
-        map = new HashMap<>();
-        map.put(ipadProProductName, new Price(1000L));
-        map.put(heroInkPenProductName, new Price(10L));
-        map.put(gmCricketBatProductName, new Price(100L));
-    }
 
     public static void main(String[] args) {
-
+    ProductService productService = new ProductService();
         //already available products------- from system
-        Product ipadProProduct = new Product(ipadProProductName, getCompetitorAdjustedPrice(ipadProProductName));
+        Product ipadProProduct = productService.getProductByName(ProductService.ipadProProductName);
 
-        Product heroInkPenProduct = new Product(heroInkPenProductName, getCompetitorAdjustedPrice(heroInkPenProductName));
+        Product heroInkPenProduct = productService.getProductByName(ProductService.heroInkPenProductName);
 
-        Product gmCricketBatProduct = new Product(gmCricketBatProductName, getCompetitorAdjustedPrice(gmCricketBatProductName));
+        Product gmCricketBatProduct = productService.getProductByName(ProductService.gmCricketBatProductName);
 
 
         //------user interaction starts here
@@ -41,13 +29,13 @@ public class Application {
         cart.addProduct(new CartItem(gmCricketBatProduct, 2));
         displayInformation(cart);
 
-        cart.removeItem(ipadProProductName);
+        cart.removeItem(ProductService.ipadProProductName);
         displayInformation(cart);
 
         cart.addProduct(new CartItem(ipadProProduct, 5));
         displayInformation(cart);
 
-        cart.removeItem(ipadProProductName);
+        cart.removeItem(ProductService.ipadProProductName);
         displayInformation(cart);
 
         Cart cart2 = new Cart("Cart-2");
@@ -57,10 +45,6 @@ public class Application {
 
     }
 
-    public static Price getCompetitorAdjustedPrice(String name) {
-        long discountedAmount = map.get(name).getAmount().longValue() * 9;
-        return new Price(discountedAmount/10);
-    }
 
     public static void displayInformation(Cart cart) {
         System.out.println(MessageFormat.format("\n----------Items In the {0}:--------", cart.getId()));
