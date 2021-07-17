@@ -33,3 +33,4 @@ settings.gradle
 !gradle-wrapper.jar
 .bin
 .lock
+/.gradle/
