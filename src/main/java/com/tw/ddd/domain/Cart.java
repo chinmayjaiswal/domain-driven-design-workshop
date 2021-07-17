@@ -6,11 +6,14 @@ import java.util.List;
 import java.util.Set;
 
 public class Cart {
+    private String id;
+
 
     private final Set<CartItem> items;
     private final List<String> removedItemsLog;
 
-    public Cart() {
+    public Cart(String id) {
+        this.id = id;
         items = new HashSet<>();
         removedItemsLog = new ArrayList<String>();
     }
@@ -30,5 +33,9 @@ public class Cart {
 
     public List<String> getRemovedItemsLog() {
         return removedItemsLog;
+    }
+
+    public String getId() {
+        return id;
     }
 }
