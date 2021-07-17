@@ -12,6 +12,10 @@ public class Price {
         this.currency = Currency.getInstance("INR");
     }
 
+    public Long getAmount() {
+        return amount;
+    }
+
     @Override
     public String toString() {
         return amount +" " + currency.getCurrencyCode();
