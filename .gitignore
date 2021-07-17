@@ -26,3 +26,6 @@ hs_err_pid*
 build
 gradle
 settings.gradle
+*.class
+*.lock
+*.bin
