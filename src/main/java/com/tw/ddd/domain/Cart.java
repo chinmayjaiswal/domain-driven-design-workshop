@@ -7,7 +7,7 @@ import java.util.Set;
 
 public class Cart {
     private String id;
-
+    private String status;
 
     private final Set<CartItem> items;
     private final List<String> removedItemsLog;
@@ -38,5 +38,18 @@ public class Cart {
 
     public String getId() {
         return id;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public Order checkout(){
+        this.status = "Checked-Out";
+        return new Order(this);
     }
 }

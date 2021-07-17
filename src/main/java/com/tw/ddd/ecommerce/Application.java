@@ -2,9 +2,9 @@ package com.tw.ddd.ecommerce;
 
 import com.tw.ddd.domain.Cart;
 import com.tw.ddd.domain.CartItem;
+import com.tw.ddd.domain.Order;
 import com.tw.ddd.domain.Product;
 import com.tw.ddd.domain.service.ProductService;
-import com.tw.ddd.domain.service.ProductPricingService;
 
 import java.text.MessageFormat;
 
@@ -38,10 +38,17 @@ public class Application {
         cart.removeItem(ProductService.ipadProProductName);
         displayInformation(cart);
 
+        Order order = cart.checkout();
+        Long totalAMount = order.calculateTotalAmount();
+        System.out.println(" Cart-1 total Amount:" + totalAMount);
+
         Cart cart2 = new Cart("Cart-2");
         cart2.addProduct(new CartItem(ipadProProduct, 2));
         cart2.addProduct(new CartItem(gmCricketBatProduct, 2));
         displayInformation(cart2);
+        Order order2 = cart.checkout();
+        Long totalAMount2 = order.calculateTotalAmount();
+        System.out.println(" Cart-1 total Amount:" + totalAMount2);
 
     }
 
