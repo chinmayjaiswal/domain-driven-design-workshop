@@ -29,7 +29,7 @@ settings.gradle
 *.lock
 *.bin
 *.gradle
-/build/
+/build/*
 !gradle-wrapper.jar
 .bin
 .lock
